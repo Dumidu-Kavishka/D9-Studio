@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dumidu Kavishka | D9 Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GLOBAL RESET & HIGH-CONTRAST THEME --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-dark: #030305;
+            --bg-glow: radial-gradient(circle at top right, rgba(0, 255, 135, 0.08), transparent 40%),
+                       radial-gradient(circle at bottom left, rgba(96, 239, 255, 0.05), transparent 50%);
+            --glass-card: rgba(15, 15, 20, 0.7);
+            --border-glow: linear-gradient(90deg, #00ff87, #60efff);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --neon-green: #00ff87;
+            --cyan: #60efff;
+            --fb-color: #1877f2;
+            --whatsapp-color: #25D366;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: var(--bg-glow);
+            background-attachment: fixed;
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding-top: 80px; /* Prevents hero content from hiding behind fixed nav */
+        }
+
+        /* --- NEO-MINIMALIST NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 8%;
+            background: rgba(3, 3, 5, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: var(--border-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-green);
+            background: rgba(0, 255, 135, 0.05);
+            box-shadow: inset 0 0 8px rgba(0, 255, 135, 0.1);
+        }
+
+        /* Mobile Menu Toggle via Checkbox */
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: var(--text-main);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* --- ASYMMETRIC MODERN HERO --- */
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 8%;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .tagline {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--cyan);
+            margin-bottom: 20px;
+            display: inline-block;
+            border-left: 3px solid var(--neon-green);
+            padding-left: 12px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text-main);
+            margin-bottom: 25px;
+        }
+
+        .hero-text h1 span {
+            background: var(--border-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .btn-fb {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            color: #ffffff;
+            background: rgba(24, 119, 242, 0.1);
+            border: 1px solid var(--fb-color);
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(24, 119, 242, 0.15);
+        }
+
+        .btn-fb i {
+            font-size: 18px;
+        }
+
+        .btn-fb:hover {
+            background: var(--fb-color);
+            box-shadow: 0 10px 30px rgba(24, 119, 242, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .hero-img-box {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .main-profile-img {
+            width: 100%;
+            max-width: 380px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+
+        .hero-img-box::before {
+            content: '';
+            position: absolute;
+            width: calc(100% + 4px);
+            max-width: 384px;
+            height: 504px;
+            background: var(--border-glow);
+            border-radius: 14px;
+            z-index: 1;
+            top: -2px;
+            opacity: 0.3;
+            filter: blur(12px);
+        }
+
+        /* --- CYBER GRID GALLERY SECTION --- */
+        .gallery-section {
+            padding: 100px 8%;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title span {
+            color: var(--neon-green);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            width: 100%;
+        }
+
+        .gallery-item {
+            background: var(--glass-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease;
+        }
+
+        .img-container {
+            overflow: hidden;
+            width: 100%;
+            height: 350px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: none; 
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-green);
+            box-shadow: 0 20px 40px rgba(0, 255, 135, 0.08);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-desc {
+            padding: 24px;
+        }
+
+        .gallery-desc h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .gallery-desc p {
+            font-size: 13px;
+            color: var(--cyan);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- GLOW STUDIO FOOTER --- */
+        footer {
+            padding: 80px 8% 40px 8%;
+            background: #020203;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .contact-info a.email-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info a.email-link:hover {
+            color: var(--cyan);
+        }
+
+        footer p.credits {
+            font-size: 13px;
+            color: #475569;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            padding-top: 40px;
+        }
+
+        /* --- FLOATING WHATSAPP BUTTON --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            animation: pulseEffect 2s infinite;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        @keyframes pulseEffect {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 968px) {
+            body { padding-top: 70px; }
+            nav { padding: 15px 5%; }
+            
+            /* Responsive Hamburger Mechanics */
+            .menu-icon { display: block; }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(3, 3, 5, 0.95);
+                backdrop-filter: blur(25px);
+                -webkit-backdrop-filter: blur(25px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 35px;
+                transition: left 0.4s ease;
+            }
+
+            .menu-toggle:checked ~ ul {
+                left: 0;
+            }
+
+            nav ul li a { font-size: 18px; }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 60px 5%;
+                gap: 40px;
+            }
+
+            .hero-text h1 { font-size: 42px; }
+            .hero-text p { margin: 0 auto 35px auto; }
+            
+            .main-profile-img, .hero-img-box::before {
+                height: 400px;
+                width: 300px;
+            }
+
+            .gallery-section { padding: 60px 5%; }
+            .section-title { font-size: 34px; }
+            .grid-container { gap: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">D9 STUDIO.</div>
+        <div class="nav-container">
+            <input type="checkbox" id="toggle-menu" class="menu-toggle">
+            <label for="toggle-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#work">Our Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <p class="tagline">Visual Storyteller</p>
+            <h1>Hi, I'm <br><span>DUMIDU KAVISHKA</span></h1>
+            <p>Capturing raw human emotions, high-contrast frames, and premium events forever. Specializing in luxury wedding setups, editorial portraits, and cinematic visual concepts.</p>
+            
+            <a href="https://web.facebook.com/share/p/19tUXYpz2o/" target="_blank" class="btn-fb">
+                <i class="fab fa-facebook-f"></i> Visit D9 Studio Portfolio
+            </a>
+        </div>
+        <div class="hero-img-box">
+            <!-- Ensure you save your hero picture as 'profile.jpg' inside an 'images' directory -->
+            <img src="F:\My new portfoliyo\images\ff.jpg" alt="Dumidu Kavishka" class="main-profile-img">
+        </div>
+    </section>
+
+    <section class="gallery-section" id="work">
+        <div class="section-header">
+            <h2 class="section-title">Selected <span>Creations</span></h2>
+        </div>
+        
+        <div class="grid-container">
+            <div class="gallery-item">
+                <div class="img-container">
+                    <!-- Recommended live relative structure -->
+                    <img src="F:\My new portfoliyo\images\M (7).jpg" alt="Wedding Shoot">
+                </div>
+                <div class="gallery-desc">
+                    <h4>Wedding Masterpieces</h4>
+                    <p>Premium Wedding Registry</p>
+                </div>
+            </div>
+
+            
+            <div class="gallery-item">
+                <div class="img-container">
+                    <img src="F:\My new portfoliyo\images\DSC01078c.jpg" alt="Cinematic Portrait">
+                </div>
+                
+                <div class="gallery-desc">
+                    <h4>Bridle</h4>
+                    <p>Indor & Fine-Art Lighting</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="img-container">
+                    <img src="F:\My new portfoliyo\images\500229492_122246243228237532_7525647431624733181_n.jpg" alt="Family Portrait">
+                </div>
+                <div class="gallery-desc">
+                    <h4>Lifestyle & Family</h4>
+                    <p>High Contrast Mood Concepts</p>
+                </div>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="gallery-item">
+                <div class="img-container">
+                    <!-- Recommended live relative structure -->
+                    <img src="F:\My new portfoliyo\images\DSC03628.jpg" alt="Wedding Shoot">
+                </div>
+                <div class="gallery-desc">
+                    <h4>Wedding Masterpieces</h4>
+                    <p>Premium Wedding Registry</p>
+                </div>
+            </div>
+
+            <!--1 second line-->
+            
+            <div class="gallery-item">
+                <div class="img-container">
+                    <img src="F:\My new portfoliyo\images\s (1)-Recovered d.jpg" alt="Cinematic Portrait">
+                </div>
+                <div class="gallery-desc">
+                    <h4>Bridle</h4>
+                    <p>Indor & Fine-Art Lighting</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="img-container">
+                    <img src="F:\My new portfoliyo\images\pabasara (3).jpg" alt="Family Portrait">
+                </div>
+                <div class="gallery-desc">
+                    <h4>Lifestyle & Family</h4>
+                    <p>High Contrast Mood Concepts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h3 class="footer-title">Let's Create Together</h3>
+        <p class="footer-text">Available worldwide for weddings, commercial campaigns, and personal editorial portraiture.</p>
+        
+        <div class="contact-info">
+            <a href="mailto:dumidukavishka3@gmail.com" class="email-link">
+                <i class="fas fa-envelope"></i> dumidukavishka3@gmail.com
+            </a>
+            
+            <a href="https://web.facebook.com/share/p/19tUXYpz2o/" target="_blank" class="btn-fb">
+                <i class="fab fa-facebook-f"></i> D9 Facebook Feed
+            </a>
+        </div>
+        <p class="credits">&copy; 2026 D9 Studio. All Rights Reserved. Designed for Dumidu Kavishka.</p>
+    </footer>
+
+    <a href="https://wa.me/94789340511" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
